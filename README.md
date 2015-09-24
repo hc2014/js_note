@@ -113,6 +113,11 @@ function handleCaller() {
 
 ```
 执行handlCaller();该函数调用了callerDemo();返回信息就是函数handleCaller()的字符串
+```
+function handleCaller() {
+      callerDemo();
+}
+```
 据悉caller并非标准属性，但是大部分浏览器是支持的.
 
 ###caller和callee的区别有两点
