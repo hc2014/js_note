@@ -67,4 +67,4 @@ function f(x){
 调用f(2);将会输出:
 <br />**1**<br />
 **2**
-因为arguments[0]就是等于x，所以他们无论谁修改了值都会影响对方
+因为arguments[0]就是等于x，所以他们无论谁修改了值都会影响对方.不仅如此,你还可以直接给arguments赋值！但是在ECMAScript5中是无法给arguments赋值，也无法修改arguments[]里面的值.甚至在严格模式中(函数体内第一行写上\"use strict"\进入严格模式),argument是保留字,无法为其赋值，不然会报错
