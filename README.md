@@ -85,3 +85,38 @@ function f(){
   console.log(arguments.callee.toString())
 }
 ```
+再来一个例子:
+```
+function f(x){
+	if(x<=1) return 1;
+	return x*arguments.callee(x-1);
+}
+```
+这是一个递归运算,就是计算1到x的阶乘,以f(5)为例，输出是120即1*2*3*4*5=120.现在来看看是如何计算的
+####f(5) 返回的是5*arguments.callee(4),刚才也说了arguments.callee返回的是函数本身,也就是说是5*arguments.callee(4)实际上就是等####于是5*f(4),一次类推，直到x<=1 返回1为止;
+
+###arguments.caller
+arguments.caller返回的是调用当前正在执行的函数的函数，也就是说返回的是当前函数的调用者,例如:
+
+```
+function callerDemo() {
+    if (callerDemo.caller) {
+        var a= callerDemo.caller.toString();
+          alert(a);
+      } else {
+          alert("this is a top function");
+      }
+}
+function handleCaller() {
+      callerDemo();
+}
+
+```
+执行handlCaller();该函数调用了callerDemo();返回信息就是函数handleCaller()的字符串
+据悉caller并非标准属性，但是大部分浏览器是支持的.
+
+###caller和callee的区别有两点
+####1.callee返回当前正在执行函数的本身，而caller返回的是当前执行函数的调用者
+####2.callee是直接用arguments.callee来调用,而caller是用执行函数的名称，上面例子中，在callerDemo()函数里面用到了caller。所以使用callerDemo.caller的方式来调用的
+
+在ES5的严格模式中，caller和callee的取值和赋值都是会报一个类型错误滴
