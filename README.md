@@ -125,3 +125,19 @@ function handleCaller() {
 ####2.callee是直接用arguments.callee来调用,而caller是用执行函数的名称，上面例子中，在callerDemo()函数里面用到了caller。所以使用callerDemo.caller的方式来调用的
 
 在ES5的严格模式中，caller和callee的取值和赋值都是会报一个类型错误滴
+
+
+#及时执行函数
+及时执行函数有两种写法
+```
+(function f(){
+	//逻辑代码
+})();
+```
+第二种写法是:
+```
+(function(){
+	//逻辑代码
+}())
+```
+####两种写法的区别是第一种是有函数名称的,并且最后的一对()在第一个()外面
